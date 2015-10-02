@@ -1,5 +1,39 @@
 <h1> Welcome Admin!</h1>
 <ul>
   <li><%= link_to 'Manage Movies', movies_path %></li>
-  <li><%= link_to 'Manage Users', users_path %></li>
+  <li><%= link_to "Create Admin", new_admin_user_path %></li>
 </ul>
+
+  <table>
+  <thead>
+    <th>ID</th>
+    <th>USER NAME</th>
+    <th>USER EMAIL</th>
+    <th>CREATED DATE</th>
+    <th>UPDATED DATE</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
+    </thead>
+ <tbody>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.full_name %></td>
+    <td><%= user.email %></td>
+    <td><%= formatted_date(user.created_at) %></td>
+    <td><%= formatted_date(user.updated_at) %></td>
+    <td><%= link_to "Edit", edit_admin_user_path(user) %></td>
+    <td><%= link_to "Delete", admin_user_path(user), method: :delete, data: { confirm: "Are you sure?"} %></td>
+  </tr>
+  <br>
+  <% end %>
+  </tbody>
+  </table>
+ 
+
+  <br>
+  <%= link_to "Back to all movies", movies_path %>
+  <hr>
+
+  
+

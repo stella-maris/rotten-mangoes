@@ -2,6 +2,11 @@ class Admin::UsersController < ApplicationController
   before_filter :admin_only
 
   def index
+    @users = User.all
+  end
+
+  def new
+    @user = User.new
   end
 
   def create
@@ -13,6 +18,12 @@ class Admin::UsersController < ApplicationController
     else
       render :new
     end
+  end
+
+protected
+
+  def user_params
+    params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation)
   end
 
 
