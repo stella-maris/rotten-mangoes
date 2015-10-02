@@ -10,6 +10,7 @@ RottenMangoes::Application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :sessions, only: [:new, :create, :destroy]
     get 'admin/users', to: 'admin/users#index'
   end
 

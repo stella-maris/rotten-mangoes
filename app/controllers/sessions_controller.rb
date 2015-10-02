@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
     elsif user && user.authenticate(params[:password]) && user.admin #this guy is a admin
-      session[:admin] = user.id
-      redirect_to admin_users_path
+      session[:user_id] = user.id
+      session[:admin] = user.id  
+      redirect_to movies_path, notice: "Welcome admin #{user.firstname}"
     else
       flash.now[:alert] = "Log in failed..."
       render :new
@@ -23,3 +24,5 @@ class SessionsController < ApplicationController
   end
 
 end
+
+# redirect_to admin_users_path
