@@ -3,14 +3,14 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  protected
+  def admin_only
+    if !current_user || !current_user.admin
+      flash[:alert] = "You must be an admin"
+      redirect_to root_path
+    end
+  end
 
-  # def admin_only
-  #   if !current_user || !current_user.admin
-  #     flash[:alert] = "You must be an admin"
-  #     redirect_to root_path
-  #   end
-  # end
+  protected
 
   def restrict_access
     unless current_user

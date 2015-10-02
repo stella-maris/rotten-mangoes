@@ -1,5 +1,8 @@
 class Admin::UsersController < ApplicationController
-  # before_filter :admin_only
+  before_filter :admin_only
+
+  def index
+  end
 
   def create
     @user = User.new(user_params)
@@ -12,8 +15,7 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-  def index
-  end
+
 
   # def login
   #   username = params[:username]
