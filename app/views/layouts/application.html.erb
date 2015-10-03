@@ -5,6 +5,19 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  
+  <%= form_tag(movies_path, :method => "get", id: "search-form") do %>
+ 
+  <p><%= params[:search] %></p>
+
+  <p>
+  <%= text_field_tag :title, params[:title], placeholder: "Search movie titles" %>
+  <%= text_field_tag :director, params[:director], placeholder: "Search movie director" %>
+  <%= submit_tag "Search" %>
+  </p>
+  <% end %> 
+
+
 </head>
 <body>
   <% flash.each do |key, value| %>
