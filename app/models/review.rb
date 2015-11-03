@@ -3,7 +3,7 @@ class Review < ActiveRecord::Base
   belongs_to :movie
 
   validates :user,
-        presence: true
+    presence: true
 
   validates :movie,
     presence: true
