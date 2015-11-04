@@ -1,10 +1,17 @@
 body {
   padding-top: 60px;
   font-family: 'Arvo', serif;
+/*  margin-left: 20px;*/  
+  padding: 50px;
+}
+
+.title {
+  background-color: #00e676;
 }
 
 h1 {
   font-family: 'Fugaz One', cursive;
+  text-align: center;
 }
 
 /*
